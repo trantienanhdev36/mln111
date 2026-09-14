@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLN111 AI Analyzer</title>
+  <style>
+    :root {
+      --fpt-orange: #f58220;
+      --fpt-red: #d71920;
+      --ink: #2f241f;
+      --paper: #fffaf5;
+      --muted: #806e64;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 340px;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    main {
+      padding: 24px;
+      background: linear-gradient(145deg, #fffaf5 0%, #fff1e5 100%);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--fpt-orange), var(--fpt-red));
+      border-radius: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .description {
+      margin: 0 0 20px;
+      color: #5f4e45;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px 16px;
+      border: 0;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(90deg, var(--fpt-orange), var(--fpt-red));
+      box-shadow: 0 5px 14px rgba(215, 25, 32, 0.22);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 7px 18px rgba(215, 25, 32, 0.3);
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+      transform: none;
+    }
+
+    #status {
+      min-height: 18px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    #status.error {
+      color: var(--fpt-red);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">
+      <div class="brand-mark">MLN</div>
+      <div>
+        <h1>MLN111 Analyzer</h1>
+        <p class="subtitle">Triết học Mác-Lênin</p>
+      </div>
+    </div>
+
+    <p class="description">Lấy nội dung trang hiện tại và phân tích bằng AI theo các khái niệm trọng tâm của môn MLN111.</p>
+    <button id="analyzeButton" type="button">Phân tích ngay</button>
+    <p id="status" role="status" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

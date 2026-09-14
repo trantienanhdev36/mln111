@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phân tích MLN111</title>
+  <style>
+    :root {
+      --orange: #f58220;
+      --red: #d71920;
+      --ink: #2f241f;
+      --muted: #75635a;
+      --paper: #fffaf5;
+      --line: #f0d9c7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f7eee7;
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      padding: 42px 24px 72px;
+      color: #fff;
+      background: linear-gradient(120deg, var(--orange), var(--red));
+    }
+
+    .header-inner, main {
+      width: min(920px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.86;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.12;
+    }
+
+    .source {
+      margin: 18px 0 0;
+      overflow: hidden;
+      color: #fff4ed;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .source a { color: #fff; }
+
+    main {
+      position: relative;
+      margin-top: -34px;
+      padding-bottom: 56px;
+    }
+
+    article, .error {
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      box-shadow: 0 15px 35px rgba(95, 55, 31, 0.1);
+    }
+
+    article h2, article h3 {
+      color: var(--red);
+      line-height: 1.25;
+    }
+
+    article h2 { margin-top: 0; }
+    article blockquote {
+      margin: 24px 0;
+      padding: 14px 20px;
+      border-left: 4px solid var(--orange);
+      color: var(--muted);
+      background: #fff1e5;
+    }
+
+    article li { margin: 6px 0; }
+
+    .error {
+      border-color: #efb4b7;
+      color: #9f1d25;
+      background: #fff5f5;
+    }
+
+    .error h2 { margin-top: 0; }
+
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">MLN111 AI Analyzer</p>
+      <h1 th:text="${title != null and !#strings.isEmpty(title) ? title : 'Kết quả phân tích'}">Kết quả phân tích</h1>
+      <p class="source" th:if="${url != null and !#strings.isEmpty(url)}">
+        Nguồn: <a th:href="${url}" th:text="${url}" target="_blank" rel="noopener">Trang nguồn</a>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <div class="error" th:if="${error != null}">
+      <h2>Không thể hoàn tất phân tích</h2>
+      <p th:text="${error}">Đã xảy ra lỗi trong quá trình phân tích.</p>
+    </div>
+
+    <article th:if="${analysis != null}" th:utext="${analysis}">
+      <h2>Phân tích nội dung</h2>
+      <p>Kết quả phân tích sẽ được hiển thị tại đây.</p>
+    </article>
+
+    <footer>Phân tích được tạo bởi MLN111 AI Analyzer</footer>
+  </main>
+</body>
+</html>
