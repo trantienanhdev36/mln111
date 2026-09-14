@@ -1,3 +1,4 @@
+const API_URL = 'https://mln111-1-8ezh.onrender.com';
 const analyzeButton = document.getElementById('analyzeButton');
 const statusElement = document.getElementById('status');
 
@@ -35,7 +36,7 @@ async function analyzeCurrentTab() {
     }
 
     setStatus('Đang gửi nội dung đến máy chủ...');
-    const response = await fetch('http://localhost:8080/analyze', {
+    const response = await fetch(`${API_URL}/analyze`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
